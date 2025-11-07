@@ -1,0 +1,21 @@
+Running vmSim on file art.trace numFrames 8 alg LRU debug 0
+faults 2872  of  100000  faultRate:  0.02872
+faults 5738  of  200000  faultRate:  0.02869
+faults 8604  of  300000  faultRate:  0.02868
+faults 11470  of  400000  faultRate:  0.028675
+faults 14337  of  500000  faultRate:  0.028674
+faults 17204  of  600000  faultRate:  0.028673333333333332
+faults 19806  of  700000  faultRate:  0.028294285714285713
+faults 20908  of  800000  faultRate:  0.026135
+faults 21784  of  900000  faultRate:  0.024204444444444445
+faults 23285  of  1000000  faultRate:  0.023285
+faults 24895  of  1100000  faultRate:  0.022631818181818183
+faults 27110  of  1200000  faultRate:  0.022591666666666666
+faults 29976  of  1300000  faultRate:  0.023058461538461538
+faults 32842  of  1400000  faultRate:  0.02345857142857143
+faults 35708  of  1500000  faultRate:  0.023805333333333335
+faults 38575  of  1600000  faultRate:  0.024109375
+faults 41443  of  1700000  faultRate:  0.02437823529411765
+faults 44309  of  1800000  faultRate:  0.02461611111111111
+faults 47176  of  1900000  faultRate:  0.024829473684210526
+faults 48831  of  1957764  faultRate:  0.024942230013423477
