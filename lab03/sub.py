@@ -8,7 +8,11 @@ def main():
     for line in letters:
         l = []
         subs = []
+<<<<<<< HEAD
         regex = r"^(?=.*m.*i.*d.*s)"
+=======
+        regex = r"m+i+d+s+"
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
         contains = False
         for letter in line:
             if letter == 'M':
@@ -26,7 +30,11 @@ def main():
             else:
                 l.append(letter)
             word = "".join(subs)
+<<<<<<< HEAD
         if re.search(regex, word):
+=======
+        if re.fullmatch(regex, word):
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
              contains = True
         if contains == True:
             mids.write("".join(l))

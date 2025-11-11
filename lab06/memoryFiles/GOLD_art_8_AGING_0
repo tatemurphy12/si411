@@ -1,0 +1,21 @@
+Running vmSim on file art.trace numFrames 8 alg AGING debug 0
+faults 3076  of  100000  faultRate:  0.03076
+faults 6152  of  200000  faultRate:  0.03076
+faults 9209  of  300000  faultRate:  0.030696666666666667
+faults 12305  of  400000  faultRate:  0.0307625
+faults 15370  of  500000  faultRate:  0.03074
+faults 18480  of  600000  faultRate:  0.0308
+faults 21266  of  700000  faultRate:  0.03038
+faults 22368  of  800000  faultRate:  0.02796
+faults 23244  of  900000  faultRate:  0.025826666666666668
+faults 24765  of  1000000  faultRate:  0.024765
+faults 26413  of  1100000  faultRate:  0.024011818181818183
+faults 28721  of  1200000  faultRate:  0.023934166666666666
+faults 31827  of  1300000  faultRate:  0.024482307692307692
+faults 34884  of  1400000  faultRate:  0.024917142857142856
+faults 37997  of  1500000  faultRate:  0.025331333333333334
+faults 41059  of  1600000  faultRate:  0.025661875
+faults 44169  of  1700000  faultRate:  0.025981764705882354
+faults 47248  of  1800000  faultRate:  0.026248888888888888
+faults 50365  of  1900000  faultRate:  0.026507894736842105
+faults 52146  of  1957764  faultRate:  0.026635488240666392

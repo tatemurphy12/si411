@@ -222,6 +222,7 @@ void * deadlock_detector(void * unused_argument)
 				else if (!(is_done[i] || ran[i])) {
 
 					can_run = true;   
+<<<<<<< HEAD
 					for (int j = 0; j < RESOURCE_COUNT; j++)
 					{
 						if (R_snapshot[i][j] > A[j])		//check if resource requested is greater than resource open
@@ -230,6 +231,9 @@ void * deadlock_detector(void * unused_argument)
 							break;
 						}
 					}
+=======
+					
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 					/* TODO:  For thread i, you must now loop over all resources.
 					   If, for any resource, there are more requested in R_snapshot (for this thread) than available in A, then thread i can't "run",
 					   and so you must set can_run to false. */
@@ -253,12 +257,15 @@ void * deadlock_detector(void * unused_argument)
 
 					  /* write some code here!!! (based on the TODO above) */
 					  
+<<<<<<< HEAD
 							for (int j = 0; j < RESOURCE_COUNT; j++)
 							{
 								A[j] = A[j] + C_snapshot[i][j];
 								C_snapshot[i][j] = 0;
 							}
 
+=======
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 					  // After freeing the resources, remember that this thread has run, and is therefore not currently deadlocked,
 					  ran[i]        = true;	  // Thread i had enough resources to notionally run.
 					  deadlocked[i] = false;
@@ -300,7 +307,10 @@ void * deadlock_detector(void * unused_argument)
 					for (j=0; j<RESOURCE_COUNT; j++) printf("%1i ",R_snapshot[i][j]);
 					printf("\n");
 				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 			}
 			
 			/* Print E, A vectors.  Use A0 so that we get the *original* value of A[] */
@@ -377,14 +387,22 @@ int main( int argc, char *argv[] )
     }
 
     /* TODO: Create deadlock detection thread */
+<<<<<<< HEAD
 	pthread_create(&deadlock_detect_thread , NULL, deadlock_detector, NULL);
+=======
+
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 
     /* Wait for all players to finish. */
     for ( i = 0; i < NUM_PLAYERS; i++ ) pthread_join( player[i], NULL );
     alldone = true;
 
     /* TODO: Wait for detector to finish. */
+<<<<<<< HEAD
 	pthread_join( deadlock_detect_thread, NULL);
+=======
+
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 
     /* Release resource blocking semaphores */
     semRelease(balls_sem);

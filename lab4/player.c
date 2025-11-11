@@ -8,16 +8,26 @@
 #include <string.h>
 
 #define NUM_PLAYERS			24
+<<<<<<< HEAD
 #define NUM_BALLS			8
 #define NUM_BATS			8
 #define NUM_GLOVES			8
+=======
+#define NUM_BALLS			6
+#define NUM_BATS			6
+#define NUM_GLOVES			6
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 #define RESOURCE_COUNT		3
 #define SHORT_WAIT			.01
 #define PLAY				1
 #define BALL				0
 #define BAT					1
 #define GLOVE				2
+<<<<<<< HEAD
 #define PLAYERS				1
+=======
+
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 /*==========================================================================*/
 
 /* Macros to encapsulate POSIX semaphore functions so they look like notes. Examples:
@@ -39,7 +49,10 @@ typedef sem_t semaphore;
 semaphore balls_sem;
 semaphore bats_sem;
 semaphore gloves_sem;
+<<<<<<< HEAD
 semaphore players_sem;
+=======
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 
 pthread_t player[NUM_PLAYERS];
 
@@ -138,9 +151,14 @@ This function is called via pthread_create(). Player threads randomly choose
 which resource to seek first. */
 {
     int n = * (int *) t_num;
+<<<<<<< HEAD
     R[n][BALL] = 1; R[n][BAT] = 1; R[n][GLOVE] = 1; // Update request matrix R;     
 	
     semWait(players_sem);
+=======
+    R[n][BALL] = 1; R[n][BAT] = 1; R[n][GLOVE] = 1; // Update request matrix R;    
+    
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
     int r = rand() % 3;		/* Get Supplies */
     if (r == 0) {
 		get_ball(n); sleep(SHORT_WAIT);
@@ -160,14 +178,20 @@ which resource to seek first. */
         //r++;
 	sleep(PLAY);
 
+<<<<<<< HEAD
 	//semSignal(players_sem);
+=======
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 	/* Release Supplies  and finish */
 	printf("player %i released glove %i\n", n, drop_glove(n)); fflush(stdout);
 	printf("player %i released bat %i\n", n, drop_bat(n)); fflush(stdout);
 	printf("player %i released ball %i\n", n, drop_ball(n)); fflush(stdout);
 	printf("player %i ........... done\n", n); fflush(stdout); 
 	is_done[n] = true;
+<<<<<<< HEAD
 	semSignal(players_sem);
+=======
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
 	return 0;
 }
 
@@ -184,7 +208,11 @@ int main( int argc, char *argv[] )
     semInit(balls_sem, NUM_BALLS);
     semInit(bats_sem, NUM_BATS);
     semInit(gloves_sem, NUM_GLOVES);
+<<<<<<< HEAD
 	semInit(players_sem, PLAYERS);
+=======
+
+>>>>>>> d3991a2127cf2398032fa436b686c0ca42d52195
     /* Initially all resources are free (set to -1) */
     for (i=0; i<NUM_BALLS; i++) ball_owner[i] = -1;
     for (i=0; i<NUM_BATS; i++) bat_owner[i] = -1;
