@@ -91,14 +91,11 @@ if __name__=="__main__":
         numOps = numOps + 1
         if debug >= 2 and numOps >= 10000:      # stop early for debug mode 2
             break
-        
+
         # Read next memory operation from file -- you should NOT need to change this part
         line_array = line.split()
         memOp = MemOp(line_array[1], line_array[2], line_array[3])   # start at 1 to skip over '#' at start of line
-        if numOps % 50 == 0:
-            for frame in frames:
-                frame.counter = (frame.counter >> 1) | (frame.referenced << 9)
-                frame.referenced = 0
+
         # Examine virtual address to split into vpn and offset (yes, changes needed here!)
         vpn    = memOp.virtAddress >> 10    # TODO (for part 1) -- you must compute this "virtual page number" from memOp.virtAddress !
         offset = memOp.virtAddress & 1023    # TODO (for part 1) -- you must compute this "page offset"         from memOp.virtAddress !
@@ -117,9 +114,8 @@ if __name__=="__main__":
                 if not frame.isValid:
                     frame.isValid = True
                     frame.vpn = vpn
+                    frame.counter = 1
                     frame.tolu = numOps
-                    frame.counter = (1 << 9)
-                    frame.referenced = 1
                     fqueue.append(i)
                     pfn = i
                     evict = False
@@ -130,25 +126,12 @@ if __name__=="__main__":
                 elif alg == LRU:
                     oldest = 1000000
                     for j, frame in enumerate(frames):
-                        if alg == LRU:
-                            if frame.tolu < oldest:
-                                oldest = frame.tolu
-                                pfn_replace = j
-                        elif alg == AGING:
-                            index = 0
-                            mcounter = 1111111111
-                            for j, frame in enumerate(frames):
-                                if frame.isValid and frame.counter < counter:
-                                    mcounter = frame.counter
-                                    index = j
-                                elif frame.isValid and frame.counter == counter:
-                                    if index == -1 or j < index:
-                                        index = j
-                            pfn_replace = index
+                        if frame.tolu < oldest:
+                            oldest = frame.tolu
+                            pfn_replace = j
                 oldvpn = frames[pfn_replace].vpn
                 frames[pfn_replace].vpn = vpn
-                frames[pfn_replace].counter = (1 << 9)
-                frames[pfn_replace].referenced = 1
+                frames[pfn_replace].counter = 1
                 frames[pfn_replace].tolu = numOps
                 if alg == FIFO:
                     fqueue.append(pfn_replace)
@@ -159,9 +142,8 @@ if __name__=="__main__":
             else:
                 print("    (no eviction was needed)")
         else:
+            frames[pfn].counter += 1
             frames[pfn].tolu = numOps
-            frames[pfn].referenced = 1
-
 
         # TODO (for part 2) -- update any reference/timing stats for page that was just used        
         
